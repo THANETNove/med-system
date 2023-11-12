@@ -8,9 +8,11 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
-
+                        <p class="text-center">
+                            <img src="{{ URL::asset('/assets/img/icons/unicons/loggo-rmutk.png') }}" alt
+                                class="mx-auto w-px-100 h-auto rounded-circle" />
+                        </p>
                         <p class="app-brand-text demo text-body fw-bolder text-center">เข้าสูระบบ</p>
-
                         <h4 class="mb-2">ระบบการเบิก-จ่ายวัสดุครุภัณฑ์</h4>
                         <p class="mb-4">โครงการพัฒนาระบบการเบิก-จ่ายวัสดุครุภัณฑ์ อบต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี</p>
 

@@ -8,9 +8,14 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
+                        <p class="text-center">
+                            <img src="{{ URL::asset('/assets/img/icons/unicons/loggo-rmutk.png') }}" alt
+                                class="mx-auto w-px-100 h-auto rounded-circle" />
+                        </p>
                         <div class="app-brand justify-content-center">
-                            <div class="app-brand-link gap-2">
 
+                            <div class="app-brand-link gap-2">
+                                {{--   --}}
                                 <span class="app-brand-text demo text-body fw-bolder">สมัครสามชิก</span>
                             </div>
                         </div>
