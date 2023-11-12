@@ -124,4 +124,5 @@
             </div>
         </div>
     </div>
+    @include('layouts.scroll_top')
 @endsection
