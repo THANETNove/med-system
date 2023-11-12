@@ -8,13 +8,9 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
-                        <div class="app-brand justify-content-center">
-                            <div class="app-brand-link gap-2">
 
-                                <span class="app-brand-text demo text-body fw-bolder">เข้าสูระบบ</span>
-                            </div>
-                        </div>
-                        <!-- /Logo -->
+                        <p class="app-brand-text demo text-body fw-bolder text-center">เข้าสูระบบ</p>
+        
                         <h4 class="mb-2">ระบบการเบิก-จ่ายวัสดุครุภัณฑ์</h4>
                         <p class="mb-4">โครงการพัฒนาระบบการเบิก-จ่ายวัสดุครุภัณฑ์ อบต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี</p>
 
