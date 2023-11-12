@@ -3,10 +3,10 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="shortcut icon" href="{{ URL::asset('/assets/image/home/unnamed.png') }}">
 
+<link rel="shortcut icon" href="{{ URL::asset('/assets/img/icons/unicons/loggo-rmutk.png') }}">
 
-<title>MED-Stystem</title>
+<title>DPME-Stystem</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
