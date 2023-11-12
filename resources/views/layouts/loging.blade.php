@@ -58,51 +58,10 @@
 </head>
 
 <body>
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu aside -->
-            @include('layouts.aside')
 
+    @yield('content')
 
-            <!-- / Menu -->
-
-            <!-- Layout container -->
-            <div class="layout-page">
-                <!-- Navbar -->
-                @include('layouts.navbar')
-                <!-- / Navbar -->
-
-                <!-- Content wrapper -->
-                <div class="content-wrapper">
-                    @yield('content')
-                    <!-- / Content -->
-                    @include('layouts.footer')
-                    <!-- Footer -->
-
-                </div>
-
-                <!-- Content wrapper -->
-            </div>
-            <!-- / Layout page -->
-        </div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-
-    <div class="buy-now">
-        <a class="btn btn-danger btn-buy-now color-w" onclick="scrollToTop()">Scroll Top</a>
-    </div>
-
-    <script>
-        function scrollToTop() {
-            // Scroll to the top of the page
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
+    @include('layouts.scroll_top')
 
     <script src="{{ URL::asset('/assets/js/javascript.js') }}"></script>
     <!-- build:js assets/vendor/js/core.jsss -->
