@@ -38,18 +38,18 @@
     <link rel="stylesheet" href="{{ URL::asset('/assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ URL::asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
-    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="{{ URL::asset('/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="{{ URL::asset('/assets/vendor/css/pages/page-auth.css') }}" />
     <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="{{ URL::asset('/assets/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
+    <script src="{{ URL::asset('/assets/js/config.js') }}"></script>
 </head>
 
 <body>
@@ -115,9 +115,18 @@
     @yield('content')
 
     <div class="buy-now">
-        <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-            class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
+        <a class="btn btn-danger btn-buy-now color-w" onclick="scrollToTop()">Scroll Top</a>
     </div>
+
+    <script>
+        function scrollToTop() {
+            // Scroll to the top of the page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 
 
     <!-- build:js assets/vendor/js/core.jsss -->
