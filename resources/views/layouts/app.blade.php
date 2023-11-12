@@ -11,7 +11,7 @@
 
 
     <title>MED-Stystem</title>
-    <link rel="stylesheet" href="{{ URL::asset('/assets/css/styles.css') }}" />
+
     <!-- Fonts -->
     {{--     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -50,6 +50,11 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ URL::asset('/assets/js/config.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
+
 </head>
 
 <body>
@@ -128,7 +133,7 @@
         }
     </script>
 
-
+    <script src="{{ URL::asset('/assets/js/javascript.js') }}"></script>
     <!-- build:js assets/vendor/js/core.jsss -->
     <script src="{{ URL::asset('/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ URL::asset('/assets/vendor/libs/popper/popper.js') }}"></script>

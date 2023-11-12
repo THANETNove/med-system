@@ -15,12 +15,11 @@
                             </div>
                         </div>
                         <!-- /Logo -->
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                {{-- <input type="text" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email" /> --}}
                                 <input id="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required placeholder="Enter your email"
@@ -58,27 +57,65 @@
 
                             <h6 class="mb-2">ข้อมูลสมาชิก</h6>
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="Enter your username" autofocus />
+                                <label for="prefix" class="form-label">คำนำหน้า</label>
+                                <input type="text" class="form-control @error('prefix') is-invalid @enderror"
+                                    id="prefix" name="prefix" placeholder="คำนำหน้า" required />
+                                @error('prefix')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="prefix" class="form-label">รหัสพนักงาน</label>
+                                <input type="text" class="form-control @error('employee_id') is-invalid @enderror"
+                                    id="employee_id" name="employee_id" placeholder="รหัสพนักงาน" required />
+                                @error('employee_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">ชื่อ</label>
+                                <input type="text" class="form-control @error('first_name') is-invalid @enderror"
+                                    id="first_name" name="first_name" placeholder="ชื่อ" required />
+                                @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">นามสกุล</label>
+                                <input type="text" class="form-control @error('last_name') is-invalid @enderror"
+                                    id="last_name" name="last_name" placeholder="นามสกุล" required />
+                                @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone_number" class="form-label">เบอร์โทร</label>
+                                <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
+                                    id="phone_number" name="phone_number" placeholder="เบอร์โทร" required />
+                                @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                                    <label class="form-check-label" for="terms-conditions">
-                                        I agree to
-                                        <a href="javascript:void(0);">privacy policy & terms</a>
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+
+                            @include('layouts.address')
+                            <button class="btn btn-primary d-grid w-100 mt-4">Sign up</button>
                         </form>
 
-                        <p class="text-center">
-                            <span>Already have an account?</span>
+                        <p class="text-center mt-3">
+                            <span>มีบัญชีอยู่แล้ว?</span>
                             <a href="{{ url('/') }}">
-                                <span>Sign in instead</span>
+                                <span>ลงชื่อเข้าใช้</span>
                             </a>
                         </p>
                     </div>
