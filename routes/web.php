@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StorageLocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,9 @@ Route::get('/subdistrict/{id}', [AddressController::class, 'subdistricts'])->nam
 
 // is_drawer ผู้เบิก
 /* Route::group(['middleware' => ['is_drawer']], function () {
-    Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
-    Route::get('/storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
-    Route::post('/storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
+Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
+Route::get('/storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
+Route::post('/storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
 }); */
 
 // เจ้าหน้าที่วัสดุ หรือ หัวหน้าวัสดุ is_admin is_headAdmin
