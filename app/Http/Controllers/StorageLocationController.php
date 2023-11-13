@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StorageLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use DB;
 
 class StorageLocationController extends Controller
 {
@@ -17,7 +18,8 @@ class StorageLocationController extends Controller
      */
     public function index()
     {
-        return view('storage_location.index');
+        $data = DB::table('storage_locations')->paginate(100);
+        return view('storage_location.index',['data' => $data]);
     }
 
     /**
