@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StorageLocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/districts/{id}', [AddressController::class, 'districts'])->name('districts');
 Route::get('/subdistrict/{id}', [AddressController::class, 'subdistricts'])->name('subdistrict');
+Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');

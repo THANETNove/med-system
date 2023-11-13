@@ -66,12 +66,12 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <div data-i18n="Account Settings">สถานที่จัดเก็บ</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Account</div>
+                    <a href="{{ url('storage-index') }}" class="menu-link">
+                        <div data-i18n="Account">ดูสถานที่</div>
                     </a>
                 </li>
                 <li class="menu-item">
