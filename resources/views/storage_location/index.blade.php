@@ -14,86 +14,90 @@
                                 @if (session('message'))
                                     <p class="message-text text-center mt-4"> {{ session('message') }}</p>
                                 @endif
-                                <div class="card">
-                                    <h5 class="card-header">Table Basic</h5>
-                                    <div class="table-responsive text-nowrap">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Project</th>
-                                                    <th>Client</th>
-                                                    <th>Users</th>
-                                                    <th>Status</th>
+
+                                <h5 class="card-header">Table Basic</h5>
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ลำดับ</th>
+                                                <th>ชื่ออาคาร</th>
+                                                <th>ชั้น</th>
+                                                <th>ชื่อห้อง</th>
+                                                <th>สถานะ</th>
+                                                @if (Auth::user()->status == '2')
                                                     <th>Actions</th>
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        <tbody class="table-border-bottom-0">
+                                            @foreach ($data->where('status', 'on')->sortByDesc('created_at') as $da)
+                                                <tr>
+                                                    <th scope="row">{{ $i++ }}</th>
+                                                    <td>{{ $da->building_name }}</td>
+                                                    <td>{{ $da->floor }}</td>
+                                                    <td>{{ $da->room_name }}</td>
+                                                    <td><span class="badge bg-label-success me-1">เปิดใช้งานอยู่</span>
+                                                    </td>
+                                                    @if (Auth::user()->status == '2')
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button type="button"
+                                                                    class="btn p-0 dropdown-toggle hide-arrow"
+                                                                    data-bs-toggle="dropdown">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('storage-edit', $da->id) }}"><i
+                                                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                            class="bx bx-trash me-1"></i> Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    @endif
                                                 </tr>
-                                            </thead>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            <tbody class="table-border-bottom-0">
-                                                @foreach ($data->where('status', 'on')->sortByDesc('created_at') as $da)
-                                                    <tr>
-                                                        <th scope="row">{{ $i++ }}</th>
-                                                        <td>{{ $da->building_name }}</td>
-                                                        <td>{{ $da->floor }}</td>
-                                                        <td>{{ $da->room_name }}</td>
-                                                        <td><span class="badge bg-label-success me-1">เปิดใช้งานอยู่</span>
-                                                        </td>
-                                                        @if (Auth::user()->status == '2')
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <button type="button"
-                                                                        class="btn p-0 dropdown-toggle hide-arrow"
-                                                                        data-bs-toggle="dropdown">
-                                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                                    </button>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);"><i
-                                                                                class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);"><i
-                                                                                class="bx bx-trash me-1"></i> Delete</a>
-                                                                    </div>
+                                            @endforeach
+
+                                            @foreach ($data->where('status', 'off')->sortByDesc('created_at') as $da)
+                                                <tr>
+                                                    <th scope="row">{{ $i++ }}</th>
+                                                    <td>{{ $da->building_name }}</td>
+                                                    <td>{{ $da->floor }}</td>
+                                                    <td>{{ $da->room_name }}</td>
+                                                    <td><span class="badge bg-label-warning me-1">ปิดใช้งานอยู่</span>
+                                                    </td>
+
+                                                    @if (Auth::user()->status == '2')
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button type="button"
+                                                                    class="btn p-0 dropdown-toggle hide-arrow"
+                                                                    data-bs-toggle="dropdown">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                            class="bx bx-edit-alt me-1"></i> update
+                                                                        status</a>
                                                                 </div>
-                                                            </td>
-                                                        @endif
-                                                    </tr>
-                                                @endforeach
-
-                                                @foreach ($data->where('status', 'off')->sortByDesc('created_at') as $da)
-                                                    <tr>
-                                                        <th scope="row">{{ $i++ }}</th>
-                                                        <td>{{ $da->building_name }}</td>
-                                                        <td>{{ $da->floor }}</td>
-                                                        <td>{{ $da->room_name }}</td>
-                                                        <td><span class="badge bg-label-warning me-1">ปิดใช้งานอยู่</span>
+                                                            </div>
                                                         </td>
+                                                    @endif
 
-                                                        @if (Auth::user()->status == '2')
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <button type="button"
-                                                                        class="btn p-0 dropdown-toggle hide-arrow"
-                                                                        data-bs-toggle="dropdown">
-                                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                                    </button>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);"><i
-                                                                                class="bx bx-edit-alt me-1"></i> update
-                                                                            status</a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        @endif
-
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="mt-5">
+                                        {!! $data->links() !!}
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 

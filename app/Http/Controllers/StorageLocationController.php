@@ -18,7 +18,7 @@ class StorageLocationController extends Controller
      */
     public function index()
     {
-        $data = DB::table('storage_locations')->paginate(100);
+        $data = DB::table('storage_locations')->orderBy('id','DESC')->paginate(100);
         return view('storage_location.index',['data' => $data]);
     }
 
@@ -62,7 +62,7 @@ class StorageLocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd("4544");
     }
 
     /**

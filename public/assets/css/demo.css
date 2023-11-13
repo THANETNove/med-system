@@ -123,6 +123,10 @@
     }
 }
 
+.scrolling {
+    animation: scrollAnimation 1s forwards;
+}
+
 /* Apply animation to the buy-now container */
 .buy-now {
     animation: scrollAnimation 0.5s ease forwards;

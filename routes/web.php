@@ -38,6 +38,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
     Route::get('/storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
     Route::post('/storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
+    Route::get('/storage-edit', [StorageLocationController::class, 'edit'])->name('storage-edit');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin
