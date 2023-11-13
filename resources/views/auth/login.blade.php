@@ -1,4 +1,4 @@
-@extends('layouts.loging')
+@extends('layouts.appLogin')
 
 @section('content')
     <div class="container-xxl">
@@ -33,9 +33,9 @@
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Password</label>
-                                    {{--  <a href="#">
+                                    <a href="{{ url('/password/reset') }}">
                                         <small>Forgot Password?</small>
-                                    </a> --}}
+                                    </a>
                                 </div>
                                 <div class="input-group input-group-merge">
 
