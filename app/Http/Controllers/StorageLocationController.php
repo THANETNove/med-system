@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StorageLocation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StorageLocationController extends Controller
 {
@@ -23,7 +25,7 @@ class StorageLocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('storage_location.create');
     }
 
     /**
@@ -31,7 +33,18 @@ class StorageLocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $randomStorage = "stgLoc-" . Str::random(10);
+
+        $data = new StorageLocation;
+        $data->code_storage = $randomStorage;
+        $data->building_name = $request['building_name'];
+        $data->floor = $request['floor'];
+        $data->room_name = $request['room_name'];
+        $data->status = "on";
+        $data->save();
+
+        return redirect('storage-index')->with('message', "บันทึกสำเร็จ");
+
     }
 
     /**

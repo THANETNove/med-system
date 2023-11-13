@@ -131,3 +131,7 @@
 .color-w {
     color: white !important;
 }
+
+.message-text {
+    color: green;
+}

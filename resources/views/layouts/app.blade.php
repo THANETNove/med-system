@@ -32,14 +32,15 @@
                 <!-- Content wrapper -->
             </div>
             <!-- / Layout page -->
+
+            @include('layouts.scroll_top')
         </div>
 
         <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
+
     </div>
 
-
-    @include('layouts.scroll_top')
+    <div class="layout-overlay layout-menu-toggle"></div>
     @include('layouts.script')
 </body>
 

@@ -2238,7 +2238,7 @@ progress {
 
 .form-label {
     margin-bottom: 0.5rem;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #566a7f;
 }
@@ -8608,7 +8608,7 @@ button:focus {
 
 .form-label,
 .col-form-label {
-    font-size: 0.75rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: inherit;
 }

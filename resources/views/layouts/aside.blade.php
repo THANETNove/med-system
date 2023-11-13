@@ -75,8 +75,8 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
+                    <a href="{{ url('storage-create') }}" class="menu-link">
+                        <div data-i18n="Notifications">เพิ่มสถานที่</div>
                     </a>
                 </li>
                 <li class="menu-item">
