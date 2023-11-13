@@ -16,10 +16,26 @@ class StorageLocationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('storage_locations')->orderBy('id','DESC')->paginate(100);
-        return view('storage_location.index',['data' => $data]);
+        $search =  $request['search'];
+        $data = DB::table('storage_locations');
+        if ($search) {
+
+           $data = $data
+           ->where('building_name', 'LIKE', "%$search%")
+           ->orWhere('floor', 'LIKE', "%$search%")
+           ->orWhere('room_name', 'LIKE', "%$search%")
+           ->orderBy('id','DESC')
+           ->paginate(100);
+           return view('storage_location.index',['data' => $data]);
+        }else{
+            $data = $data
+           ->orderBy('id','DESC')->paginate(100);
+            return view('storage_location.index',['data' => $data]);
+        }
+
+
     }
 
     /**
@@ -62,7 +78,10 @@ class StorageLocationController extends Controller
      */
     public function edit(string $id)
     {
-        dd("4544");
+        $data =  StorageLocation::find($id);
+
+        return view('storage_location.edit',['data' => $data]);
+
     }
 
     /**
@@ -70,7 +89,14 @@ class StorageLocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data =  StorageLocation::find($id);
+        $data->building_name = $request['building_name'];
+        $data->floor = $request['floor'];
+        $data->room_name = $request['room_name'];
+        $data->save();
+
+        return redirect('storage-index')->with('message', "บันทึกสำเร็จ");
     }
 
     /**
@@ -78,6 +104,18 @@ class StorageLocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data =  StorageLocation::find($id);
+
+        $data->status = "off";
+        $data->save();
+        return redirect('storage-index')->with('message', "ยกเลิกสำเร็จ");
+    }
+    public function updateStatus(string $id)
+    {
+        $data =  StorageLocation::find($id);
+
+        $data->status = "on";
+        $data->save();
+        return redirect('storage-index')->with('message', "เปิดใช้สำเร็จ");
     }
 }

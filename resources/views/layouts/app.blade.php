@@ -41,7 +41,7 @@
     </div>
 
     <div class="layout-overlay layout-menu-toggle"></div>
-    @include('layouts.scroll_top')
+
     @include('layouts.script')
 </body>
 

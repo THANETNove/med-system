@@ -9,13 +9,13 @@
                 <div class="card">
                     <div class="d-flex align-items-end row">
                         <div class="col-12">
+                            
                             <div class="card-body">
                                 <h1 class="card-title text-primary ">สถานที่จัดเก็บ</h1>
                                 @if (session('message'))
                                     <p class="message-text text-center mt-4"> {{ session('message') }}</p>
                                 @endif
 
-                                <h5 class="card-header">Table Basic</h5>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table">
                                         <thead>
@@ -54,7 +54,8 @@
                                                                     <a class="dropdown-item"
                                                                         href="{{ url('storage-edit', $da->id) }}"><i
                                                                             class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('storage-destroy', $da->id) }}"><i
                                                                             class="bx bx-trash me-1"></i> Delete</a>
                                                                 </div>
                                                             </div>
@@ -81,7 +82,8 @@
                                                                     <i class="bx bx-dots-vertical-rounded"></i>
                                                                 </button>
                                                                 <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('storage-update-status', $da->id) }}"><i
                                                                             class="bx bx-edit-alt me-1"></i> update
                                                                         status</a>
                                                                 </div>

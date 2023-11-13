@@ -36,9 +36,13 @@ Route::post('/storage-store', [StorageLocationController::class, 'store'])->name
 // เจ้าหน้าที่วัสดุ หรือ หัวหน้าวัสดุ is_admin is_headAdmin
 Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
+    Route::post('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
     Route::get('/storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
     Route::post('/storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
-    Route::get('/storage-edit', [StorageLocationController::class, 'edit'])->name('storage-edit');
+    Route::get('/storage-edit/{id}', [StorageLocationController::class, 'edit'])->name('storage-edit');
+    Route::put('/storage-update/{id}', [StorageLocationController::class, 'update'])->name('storage-update');
+    Route::get('/storage-destroy/{id}', [StorageLocationController::class, 'destroy'])->name('storage-destroy');
+    Route::get('storage-update-status/{id}', [StorageLocationController::class, 'updateStatus'])->name('storage-update-status');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin

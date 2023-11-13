@@ -19,13 +19,16 @@
                                         </div>
                                         <div class="card-body">
                                             <form class="user" id="myForm" method="POST"
-                                                action="{{ route('storage-store') }}" enctype="multipart/form-data">
+                                                action="{{ route('storage-update', $data['id']) }}"
+                                                enctype="multipart/form-data">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label"
                                                         for="basic-default-name">ชื่ออาคาร</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" name="building_name"
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $data['building_name'] }}" name="building_name"
                                                             id="basic-default-name" placeholder="ชื่ออาคาร">
                                                     </div>
                                                 </div>
@@ -34,7 +37,8 @@
                                                         for="basic-default-name">ชั้น</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control"
-                                                            name="floor"id="basic-default-name" placeholder="ชั้น">
+                                                            name="floor"id="basic-default-name"
+                                                            value="{{ $data['floor'] }}" placeholder="ชั้น">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -42,7 +46,8 @@
                                                         for="basic-default-name">ชื่อห้อง</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" name="room_name"
-                                                            id="basic-default-name" placeholder="ชื่อห้อง">
+                                                            value="{{ $data['room_name'] }}" id="basic-default-name"
+                                                            placeholder="ชื่อห้อง">
                                                     </div>
                                                 </div>
 
