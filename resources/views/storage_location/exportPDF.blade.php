@@ -16,15 +16,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&family=Sarabun:wght@100;200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
         body {
-
-
-            font-family: 'Sarabun', sans-serif !important;
-
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-family: 'Noto Sans Thai Looped', sans-serif;
+            font-family: 'Sarabun', sans-serif;
         }
 
         .mt--16 {
