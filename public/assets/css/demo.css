@@ -139,3 +139,8 @@
 .message-text {
     color: green;
 }
+
+@page {
+    size: A4;
+    margin: 1cm;
+}
