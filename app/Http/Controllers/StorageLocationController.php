@@ -6,6 +6,7 @@ use App\Models\StorageLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use DB;
+use PDF;
 
 class StorageLocationController extends Controller
 {
@@ -117,5 +118,12 @@ class StorageLocationController extends Controller
         $data->status = "on";
         $data->save();
         return redirect('storage-index')->with('message', "เปิดใช้สำเร็จ");
+    }
+    public function exportPDF()
+    {
+        $data = DB::table('storage_locations')->get();
+        $pdf = PDF::loadView('storage_location.exportPDF',['data' =>  $data]);
+        $pdf->setPaper('a4');
+        return $pdf->download('exportPDF.pdf');
     }
 }
