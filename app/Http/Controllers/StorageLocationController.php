@@ -121,9 +121,11 @@ class StorageLocationController extends Controller
     }
     public function exportPDF()
     {
-        $data = DB::table('storage_locations')->get();
+         $data = DB::table('storage_locations')->get();
         $pdf = PDF::loadView('storage_location.exportPDF',['data' =>  $data]);
         $pdf->setPaper('a4');
         return $pdf->download('exportPDF.pdf');
+
+      /*   return view('storage_location.exportPDF',['data' => $data]); */
     }
 }
