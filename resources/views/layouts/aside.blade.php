@@ -66,25 +66,26 @@
         @if (Auth::user()->status > 0)
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    {{--  <i class="menu-icon tf-icons bx bx-dock-top"></i> --}}
+                    <i class='menu-icon tf-icons bx bx-user'></i>
                     <div data-i18n="Account Settings">ระบบบุคลากร </div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
                         <a href="{{ url('personnel-index') }}" class="menu-link">
-                            <div data-i18n="Account">ดูสถานที่</div>
+                            <div data-i18n="Account">ดูบุคลากร</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('storage-create') }}" class="menu-link">
-                            <div data-i18n="Notifications">เพิ่มสถานที่</div>
+                        <a href="{{ url('personnel-create') }}" class="menu-link">
+                            <div data-i18n="Notifications">เพิ่มบุคลากร</div>
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <i class='menu-icon tf-icons bx bxs-buildings'></i>
                     <div data-i18n="Account Settings">สถานที่จัดเก็บ</div>
                 </a>
                 <ul class="menu-sub">

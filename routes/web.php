@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StorageLocationController;
+use App\Http\Controllers\PersonnelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,8 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::put('/storage-update/{id}', [StorageLocationController::class, 'update'])->name('storage-update');
     Route::get('/storage-destroy/{id}', [StorageLocationController::class, 'destroy'])->name('storage-destroy');
     Route::get('storage-update-status/{id}', [StorageLocationController::class, 'updateStatus'])->name('storage-update-status');
+    Route::get('personnel-create', [PersonnelController::class, 'create'])->name('personnel-create');
+    Route::post('personnel-store', [PersonnelController::class, 'store'])->name('personnel-store');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin
