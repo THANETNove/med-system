@@ -63,29 +63,45 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">สถานที่จัดเก็บ</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ url('storage-index') }}" class="menu-link">
-                        <div data-i18n="Account">ดูสถานที่</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ url('storage-create') }}" class="menu-link">
-                        <div data-i18n="Notifications">เพิ่มสถานที่</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+        @if (Auth::user()->status > 0)
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">ระบบบุคลากร </div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ url('personnel-index') }}" class="menu-link">
+                            <div data-i18n="Account">ดูสถานที่</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('storage-create') }}" class="menu-link">
+                            <div data-i18n="Notifications">เพิ่มสถานที่</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">สถานที่จัดเก็บ</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ url('storage-index') }}" class="menu-link">
+                            <div data-i18n="Account">ดูสถานที่</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('storage-create') }}" class="menu-link">
+                            <div data-i18n="Notifications">เพิ่มสถานที่</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endif
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>

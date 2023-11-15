@@ -144,3 +144,9 @@
     size: A4;
     margin: 1cm;
 }
+
+.align-justify-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
