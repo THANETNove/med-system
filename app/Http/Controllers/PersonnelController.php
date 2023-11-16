@@ -72,7 +72,8 @@ class PersonnelController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data =  User::find($id);
+dd( $data );
     }
 
     /**

@@ -63,8 +63,8 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ url('personnel-view', $da->id) }}"><i
-                                                                            class="bx bx-edit-alt me-1"></i> View</a>
+                                                                        href="{{ url('personnel-show', $da->id) }}"><i
+                                                                            class='bx bxs-show'></i> View</a>
                                                                     @if ($da->statusEmployee == 'on')
                                                                         <a class="dropdown-item"
                                                                             href="{{ url('personnel-edit', $da->id) }}"><i
@@ -115,11 +115,11 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ url('storage-edit', $da->id) }}"><i
-                                                                            class="bx bx-edit-alt me-1"></i> View</a>
+                                                                        href="{{ url('personnel-show', $da->id) }}"><i
+                                                                            class='bx bxs-show'></i> View</a>
                                                                     @if ($da->statusEmployee == 'on')
                                                                         <a class="dropdown-item"
-                                                                            href="{{ url('storage-edit', $da->id) }}"><i
+                                                                            href="{{ url('personnel-edit', $da->id) }}"><i
                                                                                 class="bx bx-edit-alt me-1"></i> Edit</a>
                                                                         @if (Auth::user()->id != $da->id)
                                                                             <a class="dropdown-item"
@@ -167,11 +167,11 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ url('storage-edit', $da->id) }}"><i
-                                                                            class="bx bx-edit-alt me-1"></i> View</a>
+                                                                        href="{{ url('personnel-show', $da->id) }}"><i
+                                                                            class='bx bxs-show'></i> View</a>
                                                                     @if ($da->statusEmployee == 'on')
                                                                         <a class="dropdown-item"
-                                                                            href="{{ url('storage-edit', $da->id) }}"><i
+                                                                            href="{{ url('personnel-edit', $da->id) }}"><i
                                                                                 class="bx bx-edit-alt me-1"></i> Edit</a>
                                                                         @if (Auth::user()->id != $da->id)
                                                                             <a class="dropdown-item"

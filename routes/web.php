@@ -47,6 +47,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('storage-update-status/{id}', [StorageLocationController::class, 'updateStatus'])->name('storage-update-status');
     Route::get('personnel-index', [PersonnelController::class, 'index'])->name('personnel-index');
     Route::get('personnel-create', [PersonnelController::class, 'create'])->name('personnel-create');
+    Route::get('personnel-show/{id}', [PersonnelController::class, 'show'])->name('personnel-show');
     Route::post('personnel-store', [PersonnelController::class, 'store'])->name('personnel-store');
     Route::get('personnel-destroy/{id}', [PersonnelController::class, 'destroy'])->name('personnel-destroy');
     Route::get('personnel-update-status/{id}', [PersonnelController::class, 'updateStatus'])->name('personnel-update-status');
