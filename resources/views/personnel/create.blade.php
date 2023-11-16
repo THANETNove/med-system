@@ -105,11 +105,9 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Sign up</button>
-
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>

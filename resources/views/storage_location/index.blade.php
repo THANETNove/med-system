@@ -9,7 +9,6 @@
                 <div class="card">
                     <div class="d-flex align-items-end row">
                         <div class="col-12">
-
                             <div class="card-body">
                                 <h1 class="card-title text-primary ">สถานที่จัดเก็บ</h1>
                                 <a href="{{ url('export/pdf') }}"
@@ -110,6 +109,5 @@
             </div>
         </div>
     </div>
-
     <!-- / Layout wrapper -->
 @endsection
