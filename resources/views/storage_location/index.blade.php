@@ -85,8 +85,8 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                        href="{{ url('storage-update-status', $da->id) }}"><i
-                                                                            class="bx bx-edit-alt me-1"></i> update
+                                                                        href="{{ url('storage-update-status', $da->id) }}">
+                                                                        <i class='bx bx-up-arrow-circle'></i> update
                                                                         status</a>
                                                                 </div>
                                                             </div>

@@ -33,6 +33,7 @@ class StorageLocationController extends Controller
         }else{
             $data = $data
            ->orderBy('id','DESC')->paginate(100);
+
             return view('storage_location.index',['data' => $data]);
         }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
+use PDF;
 use Illuminate\Support\Facades\Hash;
 
 class PersonnelController extends Controller
@@ -17,7 +19,11 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('users');
+        $data = $data
+        ->orderBy('id','DESC')->paginate(100);
+
+         return view('personnel.index',['data' => $data]);
     }
 
     /**
@@ -55,6 +61,7 @@ class PersonnelController extends Controller
             'subdistrict' => $request['subdistrict'],
             'zip_code' => $request['zip_code'],
             'status' => "0",
+            'statusEmployee' => "on",
         ]);
 
         return redirect('personnel-index')->with('message', "บันทึกสำเร็จ");
@@ -89,6 +96,19 @@ class PersonnelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data =  User::find($id);
+
+        $data->statusEmployee = "off";
+        $data->save();
+        return redirect('personnel-index')->with('message', "ยกเลิกสำเร็จ");
+    }
+
+    public function updateStatus(string $id)
+    {
+        $data =  User::find($id);
+
+        $data->statusEmployee = "on";
+        $data->save();
+        return redirect('personnel-index')->with('message', "เปิดใช้สำเร็จ");
     }
 }

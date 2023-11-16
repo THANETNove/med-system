@@ -31,6 +31,7 @@ class User extends Authenticatable
         'subdistrict',
         'zip_code',
         'status',
+        'statusEmployee'
     ];
 
     /**
