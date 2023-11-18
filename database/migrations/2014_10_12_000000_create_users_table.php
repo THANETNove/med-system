@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('zip_code')->nullable();
             $table->string('status')->nullable()->comment('0 = ผู้เบิก  1 = เจ้าหน้าที่วัสดุ  2 = หัวหน้าวัสดุ');
             $table->string('statusEmployee')->nullable()->comment('on = ยังเป็นพนักงาน  off = ไม่ได้เป็นพนักงานเเล้ว');
+            $table->string('statusNewPassword')->nullable()->comment('NULL = ยังไม่เปลี่ยน  1 = เคยเปลี่ยน');
             $table->rememberToken();
             $table->timestamps();
         });

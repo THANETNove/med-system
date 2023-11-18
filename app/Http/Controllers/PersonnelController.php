@@ -63,6 +63,7 @@ class PersonnelController extends Controller
             'zip_code' => $request['zip_code'],
             'status' => "0",
             'statusEmployee' => "on",
+            'statusNewPassword' => NULL
         ]);
 
         return redirect('personnel-index')->with('message', "บันทึกสำเร็จ");

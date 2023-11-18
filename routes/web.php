@@ -24,8 +24,11 @@ Route::get('/', function () {
 Auth::routes();
 //ใช้รวม
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/my-profile/{id}', [HomeController::class, 'myProfile'])->name('my-profile');
+
 Route::get('/districts/{id}', [AddressController::class, 'districts'])->name('districts');
 Route::get('/subdistrict/{id}', [AddressController::class, 'subdistricts'])->name('subdistrict');
+
 
 // is_drawer ผู้เบิก
 /* Route::group(['middleware' => ['is_drawer']], function () {
