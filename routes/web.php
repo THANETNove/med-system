@@ -23,11 +23,13 @@ Route::get('/', function () {
 
 Auth::routes();
 //ใช้รวม
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/my-profile/{id}', [HomeController::class, 'myProfile'])->name('my-profile');
+Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('my-profile/{id}', [HomeController::class, 'myProfile'])->name('my-profile');
+Route::get('new-password', [HomeController::class, 'newPassword'])->name('new-password');
+Route::put('update-password/{id}', [HomeController::class, 'update'])->name('update-password');
 
-Route::get('/districts/{id}', [AddressController::class, 'districts'])->name('districts');
-Route::get('/subdistrict/{id}', [AddressController::class, 'subdistricts'])->name('subdistrict');
+Route::get('districts/{id}', [AddressController::class, 'districts'])->name('districts');
+Route::get('subdistrict/{id}', [AddressController::class, 'subdistricts'])->name('subdistrict');
 
 
 // is_drawer ผู้เบิก
@@ -39,15 +41,15 @@ Route::post('/storage-store', [StorageLocationController::class, 'store'])->name
 
 // เจ้าหน้าที่วัสดุ หรือ หัวหน้าวัสดุ is_admin is_headAdmin
 Route::group(['middleware' => ['is_admin']], function () {
-    Route::get('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
-    Route::post('/storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
-    Route::get('/storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
-    Route::post('/storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
-    Route::get('/storage-edit/{id}', [StorageLocationController::class, 'edit'])->name('storage-edit');
-    Route::put('/storage-update/{id}', [StorageLocationController::class, 'update'])->name('storage-update');
-    Route::get('/storage-destroy/{id}', [StorageLocationController::class, 'destroy'])->name('storage-destroy');
+    Route::get('storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
+    Route::post('storage-index', [StorageLocationController::class, 'index'])->name('storage-index');
+    Route::get('storage-create', [StorageLocationController::class, 'create'])->name('storage-create');
+    Route::post('storage-store', [StorageLocationController::class, 'store'])->name('storage-store');
+    Route::get('storage-edit/{id}', [StorageLocationController::class, 'edit'])->name('storage-edit');
+    Route::put('storage-update/{id}', [StorageLocationController::class, 'update'])->name('storage-update');
+    Route::get('storage-destroy/{id}', [StorageLocationController::class, 'destroy'])->name('storage-destroy');
     Route::get('storage-update-status/{id}', [StorageLocationController::class, 'updateStatus'])->name('storage-update-status');
-    Route::get('/storage-export/pdf', [StorageLocationController::class, 'exportPDF'])->name('export/pdf');
+    Route::get('storage-export/pdf', [StorageLocationController::class, 'exportPDF'])->name('export/pdf');
 
 
     Route::get('personnel-index', [PersonnelController::class, 'index'])->name('personnel-index');

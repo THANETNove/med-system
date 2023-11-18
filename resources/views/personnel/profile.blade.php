@@ -9,8 +9,14 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <h1 class="card-title text-primary ">Profile</h1>
-                                <a href="" class="btn rounded-pill btn-primary">เปลี่ยน Password</a>
-                                <div class="row">
+                                @if (session('message'))
+                                    <p class="message-text mt-4 mb-4"> {{ session('message') }}</p>
+                                @endif
+                                @if (Auth::user()->statusNewPassword == null)
+                                    <a href="{{ url('new-password') }}" class="btn  btn-primary mb-4">เปลี่ยน Password</a>
+                                @endif
+
+                                <div class="row ">
                                     <div class="mb-3 col-md-6">
                                         <label for="firstName" class="form-label">รหัสพนักงาน</label>
                                         <input class="form-control" type="text" id="employee_id" name="employee_id"
