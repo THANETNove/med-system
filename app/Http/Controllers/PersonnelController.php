@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 use PDF;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class PersonnelController extends Controller
@@ -81,7 +82,8 @@ class PersonnelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data =  User::find($id);
+        return view('personnel.edit',['data' => $data]);
     }
 
     /**
@@ -89,7 +91,37 @@ class PersonnelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $validated = $request->validate([
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($id),
+            ],
+            'phone_number' => ['required', 'string', 'regex:/^[0-9]+$/'],
+        ]);
+
+
+        User::where('id', $id)->update([
+            'email' => $request['email'],
+            'password' => $request['password'],
+            'employee_id' => $request['employee_id'],
+            'prefix' => $request['prefix'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'phone_number' => $request['phone_number'],
+            'address' => $request['address'],
+            'provinces' => $request['provinces'],
+            'districts' => $request['districts'],
+            'subdistrict' => $request['subdistrict'],
+            'zip_code' => $request['zip_code'],
+            'status' => $request['status'],
+            'statusEmployee' => $request['statusEmployee'],
+        ]);
+
+        return redirect('personnel-index')->with('message', "บันทึกสำเร็จ");
     }
 
     /**
