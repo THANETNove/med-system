@@ -1,116 +1,152 @@
 <div class="card-body">
+    <h1 class="card-title text-primary ">ข้อมูลบุคลากร</h1>
     <div class="row">
         <div class="mb-3 col-md-6">
-            <label for="firstName" class="form-label">First Name</label>
-            <input class="form-control" type="text" id="firstName" name="firstName" value="John" autofocus="">
+            <label for="firstName" class="form-label">รหัสพนักงาน</label>
+            <input class="form-control" type="text" id="employee_id" name="employee_id"
+                value="{{ $data['employee_id'] }}">
         </div>
         <div class="mb-3 col-md-6">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe">
+            <label for="firstName" class="form-label">คำนำหน้า</label>
+            <input class="form-control" type="text" id="prefix" name="prefix" value="{{ $data['prefix'] }}">
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="firstName" class="form-label">ชื่อ</label>
+            <input class="form-control" type="text" id="firstName" name="first_name"
+                value="{{ $data['first_name'] }}">
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="lastName" class="form-label">นามสกุล</label>
+            <input class="form-control" type="text" name="last_name" value="{{ $data['last_name'] }}" id="last_name">
         </div>
         <div class="mb-3 col-md-6">
             <label for="email" class="form-label">E-mail</label>
-            <input class="form-control" type="text" id="email" name="email" value="john.doe@example.com"
-                placeholder="john.doe@example.com">
+            <input class="form-control" type="email" id="email" name="email" value="{{ $data['email'] }}" />
         </div>
         <div class="mb-3 col-md-6">
-            <label for="organization" class="form-label">Organization</label>
-            <input type="text" class="form-control" id="organization" name="organization" value="ThemeSelection">
+            <label for="phone_number" class="form-label">เบอร์โทร</label>
+            <input type="number" class="form-control" id="phone_number" name="phone_number"
+                value="{{ $data['phone_number'] }}">
+        </div>
+
+        @php
+            $dataProvinces = DB::table('provinces')->get();
+            $dataDistricts = DB::table('districts')->get();
+            $dataSubdistrict = DB::table('subdistricts')->get();
+        @endphp
+
+        <div class="mb-3 col-md-6">
+            <label for="first_name" class="form-label">ที่อยู่</label>
+            <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
+                name="address" placeholder="ที่อยู่" required />
+            @error('address')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="mb-3 col-md-6">
-            <label class="form-label" for="phoneNumber">Phone Number</label>
-            <div class="input-group input-group-merge">
-                <span class="input-group-text">US (+1)</span>
-                <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
-                    placeholder="202 555 0111">
-            </div>
-        </div>
-        <div class="mb-3 col-md-6">
-            <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-        </div>
-        <div class="mb-3 col-md-6">
-            <label for="state" class="form-label">State</label>
-            <input class="form-control" type="text" id="state" name="state" placeholder="California">
-        </div>
-        <div class="mb-3 col-md-6">
-            <label for="zipCode" class="form-label">Zip Code</label>
-            <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="231465"
-                maxlength="6">
-        </div>
-        <div class="mb-3 col-md-6">
-            <label class="form-label" for="country">Country</label>
-            <select id="country" class="select2 form-select">
-                <option value="">Select</option>
-                <option value="Australia">Australia</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Belarus">Belarus</option>
-                <option value="Brazil">Brazil</option>
-                <option value="Canada">Canada</option>
-                <option value="China">China</option>
-                <option value="France">France</option>
-                <option value="Germany">Germany</option>
-                <option value="India">India</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Israel">Israel</option>
-                <option value="Italy">Italy</option>
-                <option value="Japan">Japan</option>
-                <option value="Korea">Korea, Republic of</option>
-                <option value="Mexico">Mexico</option>
-                <option value="Philippines">Philippines</option>
-                <option value="Russia">Russian Federation</option>
-                <option value="South Africa">South Africa</option>
-                <option value="Thailand">Thailand</option>
-                <option value="Turkey">Turkey</option>
-                <option value="Ukraine">Ukraine</option>
-                <option value="United Arab Emirates">United Arab Emirates</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="United States">United States</option>
+            <label for="first_name" class="form-label">จังหวัด</label>
+            <select class="select-address select-address form-select font-size-12-black" name="provinces" id="provinces"
+                aria-label="Default select example">
+                <option selected disabled>จังหวัด</option>
+                @foreach ($dataProvinces as $provinces)
+                    @if ($data['provinces'] == $provinces->id)
+                        <option value="{{ $provinces->id }}" selected>{{ $provinces->name_th }}</option>
+                    @else
+                        @if (Auth::user()->status == '2')
+                            <option value="{{ $provinces->id }}">{{ $provinces->name_th }}</option>
+                        @endif
+                    @endif
+                @endforeach
             </select>
         </div>
         <div class="mb-3 col-md-6">
-            <label for="language" class="form-label">Language</label>
-            <select id="language" class="select2 form-select">
-                <option value="">Select Language</option>
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="de">German</option>
-                <option value="pt">Portuguese</option>
+            <label for="first_name" class="form-label">แขวง/ อำเภอ</label>
+            <select class="select-address form-select mt-2 font-size-12-black" name="districts" id="districts"
+                aria-label="Default select example">
+                <option selected disabled>แขวง/ อำเภอ</option>
+                @foreach ($dataSubdistrict as $subdistrict)
+                    @if ($data['subdistrict'] == $subdistrict->id)
+                        <option value="{{ $subdistrict->id }}" selected>{{ $subdistrict->name_th }}</option>
+                    @else
+                        @if (Auth::user()->status == '2')
+                            <option value="{{ $subdistrict->id }}">{{ $subdistrict->name_th }}</option>
+                        @endif
+                    @endif
+                @endforeach
             </select>
         </div>
         <div class="mb-3 col-md-6">
-            <label for="timeZones" class="form-label">Timezone</label>
-            <select id="timeZones" class="select2 form-select">
-                <option value="">Select Timezone</option>
-                <option value="-12">(GMT-12:00) International Date Line West</option>
-                <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                <option value="-10">(GMT-10:00) Hawaii</option>
-                <option value="-9">(GMT-09:00) Alaska</option>
-                <option value="-8">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                <option value="-7">(GMT-07:00) Arizona</option>
-                <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                <option value="-7">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                <option value="-6">(GMT-06:00) Central America</option>
-                <option value="-6">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                <option value="-6">(GMT-06:00) Saskatchewan</option>
-                <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                <option value="-5">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                <option value="-5">(GMT-05:00) Indiana (East)</option>
-                <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                <option value="-4">(GMT-04:00) Caracas, La Paz</option>
+            <label for="first_name" class="form-label">เขต/ ตำบล</label>
+            <select class="select-address form-select mt-2 font-size-12-black" name="subdistrict" id="subdistrict"
+                aria-label="Default select example">
+                <option selected disabled>เขต/ ตำบล</option>
+                @foreach ($dataDistricts as $districts)
+                    @if ($data['districts'] == $districts->id)
+                        <option value="{{ $districts->id }}" selected>{{ $districts->name_th }}</option>
+                    @else
+                        @if (Auth::user()->status == '2')
+                            <option value="{{ $districts->id }}">{{ $districts->name_th }}</option>
+                        @endif
+                    @endif
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label for="first_name" class="form-label">รหัสไปรษณีย์</label>
+            <input type="text" class="form-control" id="zip_code" name="zip_code" value="{{ $data['zip_code'] }}"
+                placeholder="รหัสไปรษณีย์" />
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="first_name" class="form-label">สถานะ
+            </label>
+            <select class="select-address form-select mt-2 font-size-12-black" name="status" id="status"
+                aria-label="Default select example">
+                <option selected disabled>สถานะ</option>
+                @if ($data['status'] == '0')
+                    <option value="{{ $data['statusEmployee'] }}" selected>ผู้เบิก</option>
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="1">เจ้าหน้าที่วัสดุ</option>
+                        <option value="2">หัวหน้าวัสดุ</option>
+                    @endif
+                @elseif ($data['status'] == '1')
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="0">ผู้เบิก</option>
+                    @endif
+                    <option value="{{ $data['statusEmployee'] }}"selected>เจ้าหน้าที่วัสดุ</option>
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="2">หัวหน้าวัสดุ</option>
+                    @endif
+                @else
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="0">ผู้เบิก</option>
+                        <option value="1">เจ้าหน้าที่วัสดุ</option>
+                    @endif
+                    <option value="{{ $data['statusEmployee'] }}" selected>หัวหน้าวัสดุ</option>
+
+                @endif
             </select>
         </div>
         <div class="mb-3 col-md-6">
-            <label for="currency" class="form-label">Currency</label>
-            <select id="currency" class="select2 form-select">
-                <option value="">Select Currency</option>
-                <option value="usd">USD</option>
-                <option value="euro">Euro</option>
-                <option value="pound">Pound</option>
-                <option value="bitcoin">Bitcoin</option>
+            <label for="first_name" class="form-label">สถานะพนักงาน</label>
+            <select class="select-address form-select mt-2 font-size-12-black" name="statusEmployee"
+                id="statusEmployee" aria-label="Default select example">
+                <option selected disabled>สถานะพนักงาน</option>
+                @if ($data['statusEmployee'] == 'on')
+                    <option value="{{ $data['statusEmployee'] }}" selected>พนักงาน</option>
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="off">พ้นสภาพพนักงาน</option>
+                    @endif
+                @else
+                    <option value="{{ $data['statusEmployee'] }}" selected>พ้นสภาพพนักงาน</option>
+                    @if ($data['statusEmployee'] == 'on')
+                        <option value="on">พนักงาน</option>
+                    @endif
+                @endif
             </select>
+
         </div>
     </div>
 </div>

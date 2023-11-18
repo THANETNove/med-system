@@ -11,9 +11,9 @@
                         <div class="col-12">
 
                             <div class="card-body">
-                                <h1 class="card-title text-primary ">สถานที่จัดเก็บ</h1>
+                                <h1 class="card-title text-primary ">ข้อมูลบุคลากร</h1>
                                 <a href="{{ url('export/pdf') }}"
-                                    class="btn rounded-pill btn-outline-info mb-3">รายงานข้อมูลสถานที่</a>
+                                    class="btn rounded-pill btn-outline-info mb-3">รายงานข้อมูลบุคลากร</a>
                                 @if (session('message'))
                                     <p class="message-text text-center mt-4"> {{ session('message') }}</p>
                                 @endif

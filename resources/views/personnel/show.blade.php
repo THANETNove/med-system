@@ -7,7 +7,9 @@
                 <div class="card">
                     <div class="d-flex align-items-end row">
                         <div class="col-12">
+                         
                             @include('personnel.view')
+
                         </div>
                     </div>
                 </div>
