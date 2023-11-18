@@ -81,7 +81,7 @@
                                                         {{ $da->last_name }}
                                                     </td>
                                                     <td>{{ $da->phone_number }}</td>
-                                                    <td>หัวหน้าวัสดุ</td>
+                                                    <td>เจ้าหน้าที่วัสดุ </td>
                                                     <td>
                                                         @if ($da->statusEmployee == 'on')
                                                             <span class="badge bg-label-success me-1">พนักงาน</span>
@@ -102,7 +102,7 @@
                                                         {{ $da->last_name }}
                                                     </td>
                                                     <td>{{ $da->phone_number }}</td>
-                                                    <td>หัวหน้าวัสดุ</td>
+                                                    <td>ผู้เบิก</td>
                                                     <td>
                                                         @if ($da->statusEmployee == 'on')
                                                             <span class="badge bg-label-success me-1">พนักงาน</span>

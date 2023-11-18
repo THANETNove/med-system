@@ -46,10 +46,9 @@
                                                     <td>หัวหน้าวัสดุ</td>
                                                     <td>
                                                         @if ($da->statusEmployee == 'on')
-                                                            <span class="badge bg-label-success me-1">เป็นพนักงาน</span>
+                                                            <span class="badge bg-label-success me-1">พนักงาน</span>
                                                         @else
-                                                            <span
-                                                                class="badge bg-label-warning me-1">พ้นสภาพเป็นพนักงาน</span>
+                                                            <span class="badge bg-label-warning me-1">พ้นสภาพพนักงาน</span>
                                                         @endif
 
                                                     </td>
@@ -95,13 +94,12 @@
                                                     <td>{{ $da->prefix }} {{ $da->first_name }} {{ $da->last_name }}
                                                     </td>
                                                     <td>{{ $da->phone_number }}</td>
-                                                    <td>หัวหน้าวัสดุ</td>
+                                                    <td>เจ้าหน้าที่วัสดุ</td>
                                                     <td>
                                                         @if ($da->statusEmployee == 'on')
-                                                            <span class="badge bg-label-success me-1">เป็นพนักงาน</span>
+                                                            <span class="badge bg-label-success me-1">พนักงาน</span>
                                                         @else
-                                                            <span
-                                                                class="badge bg-label-warning me-1">ไม่ได้เป็นพนักงาน</span>
+                                                            <span class="badge bg-label-warning me-1">พ้นสภาพพนักงาน</span>
                                                         @endif
 
                                                     </td>
@@ -147,13 +145,12 @@
                                                     <td>{{ $da->prefix }} {{ $da->first_name }} {{ $da->last_name }}
                                                     </td>
                                                     <td>{{ $da->phone_number }}</td>
-                                                    <td>หัวหน้าวัสดุ</td>
+                                                    <td>ผู้เบิก</td>
                                                     <td>
                                                         @if ($da->statusEmployee == 'on')
-                                                            <span class="badge bg-label-success me-1">เป็นพนักงาน</span>
+                                                            <span class="badge bg-label-success me-1">พนักงาน</span>
                                                         @else
-                                                            <span
-                                                                class="badge bg-label-warning me-1">ไม่ได้เป็นพนักงาน</span>
+                                                            <span class="badge bg-label-warning me-1">พ้นสภาพพนักงาน</span>
                                                         @endif
 
                                                     </td>

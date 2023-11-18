@@ -1,15 +1,10 @@
 @php
-    $currentURL = $_SERVER['REQUEST_URI'];
-    $lastPart = basename($currentURL);
-    $pathSearch = null;
-    if ($lastPart == 'storage-index') {
-        $pathSearch = 'storage-index';
-    }
-
+    $currentURL = basename($_SERVER['REQUEST_URI']);
+    $searchPaths = ['storage-index', 'personnel-index'];
+    $pathSearch = in_array($currentURL, $searchPaths) ? $currentURL : null;
 @endphp
 
-
-@if ($lastPart == 'storage-index')
+@if ($pathSearch)
     <form class="user" id="myForm" method="POST" action="{{ route($pathSearch) }}" enctype="multipart/form-data">
         @csrf
         <div class="navbar-nav align-items-center">

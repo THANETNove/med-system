@@ -18,13 +18,41 @@ class PersonnelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('users');
-        $data = $data
-        ->orderBy('id','DESC')->paginate(100);
 
-         return view('personnel.index',['data' => $data]);
+        $search =  $request['search'];
+        $statusEmployee = null;
+
+        if( $request['search'] == 'พนักงาน') {
+            $statusEmployee = "on";
+        }
+        if( $request['search'] == 'พ้นสภาพพนักงาน') {
+            $statusEmployee = "off";
+        }
+
+
+        $data = DB::table('users');
+        if ($search) {
+            $data = $data->where(function ($query) use ($search, $statusEmployee) {
+                $query->where('employee_id', 'LIKE', "%$search%")
+                      ->orWhere('first_name', 'LIKE', "%$search%");
+                if ($statusEmployee) {
+                    $query->orWhere('statusEmployee', $statusEmployee);
+                }
+            })
+            ->orderBy('id', 'DESC')
+            ->paginate(100);
+
+
+        }else{
+            $data = $data
+           ->orderBy('id','DESC')->paginate(100);
+
+        }
+
+        return view('personnel.index',['data' => $data]);
+
     }
 
     /**

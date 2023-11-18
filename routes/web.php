@@ -53,6 +53,7 @@ Route::group(['middleware' => ['is_admin']], function () {
 
 
     Route::get('personnel-index', [PersonnelController::class, 'index'])->name('personnel-index');
+    Route::post('personnel-index', [PersonnelController::class, 'index'])->name('personnel-index');
     Route::get('personnel-create', [PersonnelController::class, 'create'])->name('personnel-create');
     Route::get('personnel-show/{id}', [PersonnelController::class, 'show'])->name('personnel-show');
     Route::get('personnel-edit/{id}', [PersonnelController::class, 'edit'])->name('personnel-edit');
