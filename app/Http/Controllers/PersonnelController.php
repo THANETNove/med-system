@@ -144,4 +144,14 @@ class PersonnelController extends Controller
         $data->save();
         return redirect('personnel-index')->with('message', "เปิดใช้สำเร็จ");
     }
+
+    public function exportPDF()
+    {
+         $data = DB::table('users')->get();
+        $pdf = PDF::loadView('personnel.exportPDF',['data' =>  $data]);
+        $pdf->setPaper('a4');
+        return $pdf->download('exportPDF.pdf');
+
+      /*   return view('storage_location.exportPDF',['data' => $data]); */
+    }
 }

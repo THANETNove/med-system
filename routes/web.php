@@ -26,7 +26,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/districts/{id}', [AddressController::class, 'districts'])->name('districts');
 Route::get('/subdistrict/{id}', [AddressController::class, 'subdistricts'])->name('subdistrict');
-Route::get('/export/pdf', [StorageLocationController::class, 'exportPDF'])->name('export/pdf');
 
 // is_drawer ผู้เบิก
 /* Route::group(['middleware' => ['is_drawer']], function () {
@@ -45,6 +44,8 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::put('/storage-update/{id}', [StorageLocationController::class, 'update'])->name('storage-update');
     Route::get('/storage-destroy/{id}', [StorageLocationController::class, 'destroy'])->name('storage-destroy');
     Route::get('storage-update-status/{id}', [StorageLocationController::class, 'updateStatus'])->name('storage-update-status');
+    Route::get('/storage-export/pdf', [StorageLocationController::class, 'exportPDF'])->name('export/pdf');
+
 
     Route::get('personnel-index', [PersonnelController::class, 'index'])->name('personnel-index');
     Route::get('personnel-create', [PersonnelController::class, 'create'])->name('personnel-create');
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::put('personnel-update/{id}', [PersonnelController::class, 'update'])->name('personnel-update');
     Route::get('personnel-destroy/{id}', [PersonnelController::class, 'destroy'])->name('personnel-destroy');
     Route::get('personnel-update-status/{id}', [PersonnelController::class, 'updateStatus'])->name('personnel-update-status');
+    Route::get('personnel-export/pdf', [PersonnelController::class, 'exportPDF'])->name('personnel-export/pdf');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin

@@ -12,7 +12,7 @@
 
                             <div class="card-body">
                                 <h1 class="card-title text-primary ">ข้อมูลบุคลากร</h1>
-                                <a href="{{ url('export/pdf') }}"
+                                <a href="{{ url('personnel-export/pdf') }}"
                                     class="btn rounded-pill btn-outline-info mb-3">รายงานข้อมูลบุคลากร</a>
                                 @if (session('message'))
                                     <p class="message-text text-center mt-4"> {{ session('message') }}</p>
@@ -49,7 +49,7 @@
                                                             <span class="badge bg-label-success me-1">เป็นพนักงาน</span>
                                                         @else
                                                             <span
-                                                                class="badge bg-label-warning me-1">ไม่ได้เป็นพนักงาน</span>
+                                                                class="badge bg-label-warning me-1">พ้นสภาพเป็นพนักงาน</span>
                                                         @endif
 
                                                     </td>
