@@ -31,7 +31,7 @@
                                                 <th>สิ้นเปลือง</th>
                                                 <th>ซ่อม</th>
                                                 <th>ที่จัดเก็บ</th>
-                                                <th>สถานะ</th>
+                                                <th>Actions</th>
 
                                             </tr>
                                         </thead>
@@ -51,6 +51,21 @@
                                                     <td>{{ $da->repair_number }}</td>
                                                     <td>{{ $da->building_name }} &nbsp;{{ $da->floor }} &nbsp;
                                                         {{ $da->room_name }}</td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button"
+                                                                class="btn p-0 dropdown-toggle hide-arrow"
+                                                                data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ url('material-edit', $da->id) }}"><i
+                                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
 

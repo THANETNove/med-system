@@ -67,6 +67,8 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('material-index', [MaterialController::class, 'index'])->name('material-index');
     Route::get('material-create', [MaterialController::class, 'create'])->name('material-create');
     Route::post('material-store', [MaterialController::class, 'store'])->name('material-store');
+    Route::get('material-edit/{id}', [MaterialController::class, 'edit'])->name('material-edit');
+    Route::put('material-update/{id}', [MaterialController::class, 'update'])->name('material-update');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin

@@ -69,7 +69,10 @@ class MaterialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $mate =  Material::find($id);
+        $data = DB::table('storage_locations')->where('status','on')->get();
+        return view('material.edit',['mate' => $mate ,'data' =>   $data ]);
     }
 
     /**
@@ -77,7 +80,14 @@ class MaterialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data =  Material::find($id);
+        $data->material_name = $request['material_name'];
+        $data->material_number = $request['material_number'];
+        $data->name_material_count = $request['name_material_count'];
+        $data->code_material_storage = $request['code_material_storage'];
+        $data->save();
+
+        return redirect('material-index')->with('message', "บันทึกสำเร็จ");
     }
 
     /**
