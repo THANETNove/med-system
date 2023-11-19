@@ -23,9 +23,10 @@
                                         <thead>
                                             <tr>
                                                 <th>ลำดับ</th>
+                                                <th>รหัส</th>
                                                 <th>ชื่อ</th>
-                                                <th>จำนวนครุภัณฑ์</th>
-                                                <th>จำนวนนับครุภัณฑ์</th>
+                                                <th>จำนวน</th>
+                                                <th>จำนวนนับ</th>
                                                 <th>ชำรุด</th>
                                                 <th>แทงจำหน่าย</th>
                                                 <th>ซ่อม</th>
@@ -42,11 +43,12 @@
                                                 @foreach ($groupedData->sortBy(['type_durableArticles', 'description', 'durableArticles_number']) as $da)
                                                     <tr>
                                                         <th scope="row">{{ $i++ }}</th>
-                                                        <td>{{ $da->group_class }}-{{ $da->type_durableArticles }}
-                                                            {{ $da->description }}</td>
+                                                        <td>{{ $da->group_class }}-{{ $da->type_durableArticles }}-{{ $da->description }}
+                                                        </td>
                                                         <td>{{ $da->durableArticles_name }}</td>
                                                         <td>{{ $da->durableArticles_number }}</td>
                                                         <td>{{ $da->name_durableArticles_count }}</td>
+                                                        <td>{{ $da->damaged_number }}</td>
                                                         <td>{{ $da->bet_on_distribution_number }}</td>
                                                         <td>{{ $da->repair_number }}</td>
                                                         <td>{{ $da->building_name }} &nbsp;{{ $da->floor }} &nbsp;
