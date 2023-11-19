@@ -28,6 +28,14 @@ class DurableArticlesController extends Controller
                         ->where('description', 'LIKE', "%$components[2]%")
                         ->orWhere('durableArticles_name', 'LIKE', "%$search%")
                         ->orWhere('name_durableArticles_count', 'LIKE', "%$search%");
+                } elseif (count($components) == 2) {
+                    // Partial value like "715" or "005"
+                    $query->where('group_class', 'LIKE', "%$components[0]%")
+                        ->where('type_durableArticles', 'LIKE', "%$components[1]%")
+                        ->orWhere('description', 'LIKE', "%$search%")
+                        ->orWhere('durableArticles_name', 'LIKE', "%$search%")
+                        ->orWhere('name_durableArticles_count', 'LIKE', "%$search%");
+
                 } elseif (count($components) == 1) {
                     // Partial value like "715" or "005"
                     $query->where('group_class', 'LIKE', "%$search%")
