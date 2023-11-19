@@ -119,6 +119,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class='menu-icon tf-icons bx bx-add-to-queue'></i>
+                    <div data-i18n="Account Settings">ระบบลงทะเบียนครุภัณฑ์</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ url('durable-articles-index') }}" class="menu-link">
+                            <div data-i18n="Account">ครุภัณฑ์</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('durable-articles-create') }}" class="menu-link">
+                            <div data-i18n="Notifications">ลงทะเบียนครุภัณฑ์</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         @endif
 
         <li class="menu-item">
