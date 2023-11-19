@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Str;
+use App\Models\Material;
+
+
 
 class MaterialController extends Controller
 {
@@ -11,7 +16,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('material.index');
+        $data = DB::table('materials')->join('storage_locations', 'materials.code_material_storage', '=', 'storage_locations.code_storage')->paginate(100);
+
+        return view('material.index',['data' => $data ]);
     }
 
     /**
@@ -19,7 +26,8 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        return view('material.create');
+        $data = DB::table('storage_locations')->where('status','on')->get();
+        return view('material.create',['data' => $data]);
     }
 
     /**
@@ -27,7 +35,25 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $random = "mate-" . Str::random(10);
+
+        $data = new Material;
+        $data->code_material = $random;
+        $data->material_name = $request['material_name'];
+        $data->material_number = $request['material_number'];
+        $data->name_material_count = $request['name_material_count'];
+        $data->code_material_storage = $request['code_material_storage'];
+        $data->damaged_number = 0;
+        $data->bet_on_distribution_number = 0;
+        $data->wasteful_number = 0;
+        $data->repair_number = 0;
+        $data->status = "on";
+        $data->save();
+
+        return redirect('material-index')->with('message', "บันทึกสำเร็จ");
+
+
     }
 
     /**

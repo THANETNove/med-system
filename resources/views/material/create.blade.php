@@ -8,45 +8,65 @@
                 <div class="card ">
                     <div class="card-body">
                         <h1 class="card-title text-primary ">ระบบลงทะเบียนวัสดุ</h1>
-                        <form method="POST" action="{{ route('personnel-store') }}">
+                        <form method="POST" action="{{ route('material-store') }}">
                             @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required placeholder="Enter your email"
-                                        autocomplete="email">
+                                    <label for="material_name" class="form-label">ชื่อวัสดุ</label>
+                                    <input id="material_name" type="text"
+                                        class="form-control @error('material_name') is-invalid @enderror"
+                                        name="material_name" required placeholder="ชื่อวัสดุ" autocomplete="material_name">
 
-                                    @error('email')
+                                    @error('material_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
 
                                 </div>
-                                <div class="mb-3 col-md-6  form-password-toggle">
-                                    <label class="form-label" for="password">Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="password"
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                            required autocomplete="new-password" aria-describedby="password" />
-                                        <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="material_number" class="form-label">จำนวนวัสดุ</label>
+                                    <input id="material_number" type="number"
+                                        class="form-control @error('material_number') is-invalid @enderror"
+                                        name="material_number" required placeholder="จำนวนวัสดุ"
+                                        autocomplete="material_number">
+
+                                    @error('material_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="password">Confirm Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input id="password-confirm" type="password" class="form-control"
-                                            name="password_confirmation" required autocomplete="new-password">
-                                    </div>
+                                    <label for="name_material_count" class="form-label">ชื่อเรียกจำนวนนับวัสดุ (เช่น อัน ตัว
+                                        อื่น ๆ
+                                        )</label>
+                                    <input id="name_material_count" type="text"
+                                        class="form-control @error('name_material_count') is-invalid @enderror"
+                                        name="name_material_count" required placeholder="ชื่อเรียกจำนวนนับวัสดุ"
+                                        autocomplete="name_material_count">
+
+                                    @error('name_material_count')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="code_material_storage" class="form-label">ที่เก็บวัสดุ</label>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="code_material_storage" required>
+                                        <option selected disabled>ที่เก็บวัสดุ</option>
+                                        @foreach ($data as $lo)
+                                            <option value="{{ $lo->code_storage }}">{{ $lo->building_name }}
+                                                {{ $lo->floor }} {{ $lo->room_name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
 
                             </div>
                             <div class="mt-2">
