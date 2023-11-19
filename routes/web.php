@@ -4,6 +4,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StorageLocationController;
 use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\MaterialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +63,9 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('personnel-destroy/{id}', [PersonnelController::class, 'destroy'])->name('personnel-destroy');
     Route::get('personnel-update-status/{id}', [PersonnelController::class, 'updateStatus'])->name('personnel-update-status');
     Route::get('personnel-export/pdf', [PersonnelController::class, 'exportPDF'])->name('personnel-export/pdf');
+
+    Route::get('material-index', [MaterialController::class, 'index'])->name('material-index');
+    Route::get('material-create', [MaterialController::class, 'create'])->name('material-create');
 });
 
 //  หัวหน้าวัสดุ  is_headAdmin

@@ -101,6 +101,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class='menu-icon tf-icons bx bxs-add-to-queue'></i>
+                    <div data-i18n="Account Settings">ระบบลงทะเบียนวัสดุ</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ url('material-index') }}" class="menu-link">
+                            <div data-i18n="Account">วัสดุ</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('material-create') }}" class="menu-link">
+                            <div data-i18n="Notifications">ลงทะเบียนวัสดุ</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         @endif
 
         <li class="menu-item">
