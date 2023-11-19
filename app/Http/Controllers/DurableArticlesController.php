@@ -12,12 +12,45 @@ class DurableArticlesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('durable_articles')->join('storage_locations', 'durable_articles.code_material_storage', '=', 'storage_locations.code_storage')
+
+        $search =  $request['search']; // ตัวเลขชุดเเรก 7115 คือ group_class 005 คือ  type_durableArticles 0003 คือ description
+        $data = DB::table('durable_articles')->join('storage_locations', 'durable_articles.code_material_storage', '=', 'storage_locations.code_storage');
+        if ($search) {
+            $data = $data->where(function ($query) use ($search) {
+                $components = explode('-', $search);
+
+                if (count($components) == 3) {
+                    // Full value like "7115-005-0003"
+                    $query->where('group_class', 'LIKE', "%$components[0]%")
+                        ->where('type_durableArticles', 'LIKE', "%$components[1]%")
+                        ->where('description', 'LIKE', "%$components[2]%")
+                        ->orWhere('durableArticles_name', 'LIKE', "%$search%")
+                        ->orWhere('name_durableArticles_count', 'LIKE', "%$search%");
+                } elseif (count($components) == 1) {
+                    // Partial value like "715" or "005"
+                    $query->where('group_class', 'LIKE', "%$search%")
+                        ->orWhere('type_durableArticles', 'LIKE', "%$search%")
+                        ->orWhere('description', 'LIKE', "%$search%")
+                        ->orWhere('durableArticles_name', 'LIKE', "%$search%")
+                        ->orWhere('name_durableArticles_count', 'LIKE', "%$search%");
+                }
+                // Add additional conditions for other cases if needed
+            })
+            ->orderBy('durable_articles.id', 'DESC')
+            ->paginate(100);
+
+
+        }else{
+            $data = $data
+           ->orderBy('durable_articles.id','DESC')->paginate(100);
+
+        }
+      /*   $data = DB::table('durable_articles')->join('storage_locations', 'durable_articles.code_material_storage', '=', 'storage_locations.code_storage')
         ->orderBy('durable_articles.id', 'DESC')
         ->paginate(100);
-
+ */
         return view('durable_articles.index',['data' => $data ]);
     }
 

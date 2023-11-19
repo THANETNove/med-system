@@ -74,6 +74,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('durable-articles-index', [DurableArticlesController::class, 'index'])->name('durable-articles-index');
     Route::get('durable-articles-create', [DurableArticlesController::class, 'create'])->name('durable-articles-create');
     Route::post('durable-articles-store', [DurableArticlesController::class, 'store'])->name('durable-articles-store');
+    Route::post('durable-articles-index', [DurableArticlesController::class, 'index'])->name('durable-articles-index');
     Route::get('durable-articles-edit/{id}', [DurableArticlesController::class, 'edit'])->name('durable-articles-edit');
     Route::put('durable-articles-update/{id}', [DurableArticlesController::class, 'update'])->name('durable-articles-update');
 });
