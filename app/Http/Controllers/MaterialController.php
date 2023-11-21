@@ -14,10 +14,45 @@ class MaterialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('materials')->join('storage_locations', 'materials.code_material_storage', '=', 'storage_locations.code_storage')->paginate(100);
+        $search =  $request['search'];
+        $data = DB::table('materials')->join('storage_locations', 'materials.code_material_storage', '=', 'storage_locations.code_storage');
 
+        if ($search) {
+            $data = $data->where(function ($query) use ($search) {
+                $components = explode('-', $search);
+
+                if (count($components) == 3) {
+                    // Full value like "7115-005-0003"
+                    $query->where('group_class', 'LIKE', "%$components[0]%")
+                        ->where('type_durableArticles', 'LIKE', "%$components[1]%")
+                        ->where('description', 'LIKE', "%$components[2]%")
+                        ->orWhere('material_name', 'LIKE', "%$search%");
+                } elseif (count($components) == 2) {
+                    // Partial value like "715" or "005"
+                    $query->where('group_class', 'LIKE', "%$components[0]%")
+                        ->where('type_durableArticles', 'LIKE', "%$components[1]%")
+                        ->orWhere('description', 'LIKE', "%$search%")
+                        ->orWhere('material_name', 'LIKE', "%$search%");
+
+                } elseif (count($components) == 1) {
+                    // Partial value like "715" or "005"
+                    $query->where('group_class', 'LIKE', "%$search%")
+                        ->orWhere('type_durableArticles', 'LIKE', "%$search%")
+                        ->orWhere('description', 'LIKE', "%$search%")
+                        ->orWhere('material_name', 'LIKE', "%$search%");
+                }
+                // Add additional conditions for other cases if needed
+            })
+            ->orderBy('materials.id', 'DESC')
+            ->paginate(100);
+
+
+        }else{
+            $data = $data
+            ->orderBy('materials.id','DESC')->paginate(100);
+        }
         return view('material.index',['data' => $data ]);
     }
 
@@ -40,14 +75,15 @@ class MaterialController extends Controller
 
         $data = new Material;
         $data->code_material = $random;
+        $data->group_class = $request['group_class'];
+        $data->type_durableArticles = $request['type_durableArticles'];
+        $data->description = $request['description'];
         $data->material_name = $request['material_name'];
         $data->material_number = $request['material_number'];
+        $data->material_number_pack_dozen = $request['material_number_pack_dozen'];
         $data->name_material_count = $request['name_material_count'];
         $data->code_material_storage = $request['code_material_storage'];
-        $data->damaged_number = 0;
-        $data->bet_on_distribution_number = 0;
         $data->wasteful_number = 0;
-        $data->repair_number = 0;
         $data->status = "on";
         $data->save();
 
@@ -81,8 +117,12 @@ class MaterialController extends Controller
     public function update(Request $request, string $id)
     {
         $data =  Material::find($id);
+        $data->group_class = $request['group_class'];
+        $data->type_durableArticles = $request['type_durableArticles'];
+        $data->description = $request['description'];
         $data->material_name = $request['material_name'];
         $data->material_number = $request['material_number'];
+        $data->material_number_pack_dozen = $request['material_number_pack_dozen'];
         $data->name_material_count = $request['name_material_count'];
         $data->code_material_storage = $request['code_material_storage'];
         $data->save();

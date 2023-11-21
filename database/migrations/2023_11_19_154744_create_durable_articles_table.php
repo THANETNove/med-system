@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('code_DurableArticles')->nullable()->comment('รหัสครุภัณฑ์');
             $table->string('group_class')->nullable()->comment('กลุ่ม/ประเภท');
             $table->string('type_durableArticles')->nullable()->comment('ชนิด');
-            $table->string('description')->nullable()->comment('ชนิด');
+            $table->string('description')->nullable()->comment('รายละเอียด');
             $table->string('durableArticles_name')->nullable()->comment('ชื่อ');
             $table->string('durableArticles_number')->nullable()->comment('จำนวนครุภัณฑ์');
             $table->string('name_durableArticles_count')->nullable()->comment('ชื่อเรียกจำนวนนับครุภัณฑ์');

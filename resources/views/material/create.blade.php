@@ -12,6 +12,46 @@
                             @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-6">
+                                    <label for="group_class" class="form-label">กลุ่ม/ประเภท</label>
+                                    <input id="group_class" type="number"
+                                        class="form-control @error('group_class') is-invalid @enderror" name="group_class"
+                                        required placeholder="กลุ่ม/ประเภท" autocomplete="group_class">
+
+                                    @error('group_class')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="type_durableArticles" class="form-label">ชนิด</label>
+                                    <input id="type_durableArticles" type="number"
+                                        class="form-control @error('type_durableArticles') is-invalid @enderror"
+                                        name="type_durableArticles" required placeholder="ชนิด"
+                                        autocomplete="type_durableArticles">
+
+                                    @error('type_durableArticles')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="description" class="form-label">รายละเอียด</label>
+                                    <input id="description" type="number"
+                                        class="form-control @error('description') is-invalid @enderror" name="description"
+                                        required placeholder="รายละเอียด" autocomplete="description">
+
+                                    @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                </div>
+                                <div class="mb-3 col-md-6">
                                     <label for="material_name" class="form-label">ชื่อวัสดุ</label>
                                     <input id="material_name" type="text"
                                         class="form-control @error('material_name') is-invalid @enderror"
@@ -25,11 +65,10 @@
 
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="material_number" class="form-label">จำนวนวัสดุ</label>
+                                    <label for="material_number" class="form-label">จำนวนวัสดุ ชิ้น</label>
                                     <input id="material_number" type="number"
                                         class="form-control @error('material_number') is-invalid @enderror"
-                                        name="material_number" required placeholder="จำนวนวัสดุ"
-                                        autocomplete="material_number">
+                                        name="material_number" placeholder="จำนวนวัสดุ ชิ้น" autocomplete="material_number">
 
                                     @error('material_number')
                                         <span class="invalid-feedback" role="alert">
@@ -39,7 +78,23 @@
 
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="name_material_count" class="form-label">ชื่อเรียกจำนวนนับวัสดุ (เช่น อัน ตัว
+                                    <label for="material_number_pack_dozen" class="form-label">จำนวนวัสดุ
+                                        เเพค/โหล</label>
+                                    <input id="material_number_pack_dozen" type="number"
+                                        class="form-control @error('material_number_pack_dozen') is-invalid @enderror"
+                                        name="material_number_pack_dozen" placeholder="จำนวนวัสดุ เเพค/โหล"
+                                        autocomplete="material_number_pack_dozen">
+
+                                    @error('material_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="name_material_count" class="form-label">ชื่อเรียกจำนวนนับวัสดุ (เช่น อัน
+                                        ห่อ
                                         อื่น ๆ
                                         )</label>
                                     <input id="name_material_count" type="text"

@@ -66,6 +66,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('personnel-export/pdf', [PersonnelController::class, 'exportPDF'])->name('personnel-export/pdf');
 
     Route::get('material-index', [MaterialController::class, 'index'])->name('material-index');
+    Route::post('material-index', [MaterialController::class, 'index'])->name('material-index');
     Route::get('material-create', [MaterialController::class, 'create'])->name('material-create');
     Route::post('material-store', [MaterialController::class, 'store'])->name('material-store');
     Route::get('material-edit/{id}', [MaterialController::class, 'edit'])->name('material-edit');

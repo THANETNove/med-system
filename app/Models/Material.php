@@ -10,14 +10,15 @@ class Material extends Model
     use HasFactory;
     protected $fillable = [
         'code_material',//รหัสวัสดุ
+        'group_class', // กลุ่ม/ประเภท
+        'type_durableArticles', // ชนิด
+        'description', // รายละเอียด
         'material_name',//ชื่อ
-        'material_number',//จำนวนวัสดุ
+        'material_number',//จำนวนวัสดุชิ้น
+        'material_number_pack_dozen', //จำนวนวัสดุ เเพค/โหลด
         'name_material_count',//ชื่อเรียกจำนวนนับวัสดุ
         'code_material_storage',//รหัสที่เก็บวัสดุ
-        'damaged_number',//ชำรุด
-        'bet_on_distribution_number',//แทงจำหน่ายวัสดุ
         'wasteful_number', //สิ้นเปลือง
-        'repair_number',//การซ่อม
         'status', //สถานะ on/ off
     ];
 }
